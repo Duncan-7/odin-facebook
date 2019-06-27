@@ -6,12 +6,23 @@
 #
 duncan: 
   name: Duncan
-  email: duncanmorrison2001@yahoo.com
+  email: duncan@example.com
   encrypted_password: <%= User.new.send(:password_digest, 'password') %>
 # column: value
 #
 cordelia: 
-  name: Cordi
-  email: cordeli.chui@gmail.com
+  name: Cordelia
+  email: cordelia@example.com
   encrypted_password: <%= User.new.send(:password_digest, 'password') %>
 # column: value
+
+willis: 
+  name: Willis
+  email: willis@example.com
+  encrypted_password: <%= User.new.send(:password_digest, 'password') %>
+
+barbara: 
+  name: Barbara
+  email: barbara@example.com
+  encrypted_password: <%= User.new.send(:password_digest, 'password') %>
+
