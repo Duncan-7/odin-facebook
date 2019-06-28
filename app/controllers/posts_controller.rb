@@ -16,14 +16,17 @@ class PostsController < ApplicationController
   
   def show
     @post = Post.find(params[:id])
+    @comment = @post.comments.build
+    @comments = @post.comments
   end
 
+ 
+
   def index
-    @posts = current_user.posts
-    # current_user.friends.each do |friend|
-    #   @posts << friend.posts
-    # end
-    @posts = @posts.sort_by { |post| post.created_at }.reverse
+    @user_posts = current_user.posts
+    @friend_posts = current_user.friends.each_with_object([]) { |friend, results| results << friend.posts }
+  
+    @feed = [@user_posts, @friend_posts].flatten.sort_by { |post| post.created_at }.reverse
   end
 
   def edit

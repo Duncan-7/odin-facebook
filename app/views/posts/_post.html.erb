@@ -1,6 +1,10 @@
-<p class="heading"><%= post.created_at %></p>
+<p class="heading"><%= link_to "#{post.user.name}", user_path(post.user) %></p>
+<p class="heading"><%= link_to post.created_at, post_path(post) %></p>
     <p><%= post.content %></p>
+    <%= link_to "#{post.comments.count} comments", post_path(post) %><br>
     <% if post.user == current_user %>
       <%= link_to "edit", edit_post_path(post) %><br>
-      <%= link_to "delete", post_path(post), method: :delete %><br><br>
+      <%= link_to "delete", post_path(post), method: :delete %>
+      <br>
     <% end %>
+    <br> 

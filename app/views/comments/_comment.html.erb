@@ -1,0 +1,7 @@
+<p class="heading"><%= comment.user %></p>
+<p class="heading"><%= comment.created_at %></p>
+    <p><%= comment.content %></p>
+    <% if comment.user == current_user %>
+      
+      <%= link_to "delete", comment_path(comment), method: :delete %><br><br>
+    <% end %>

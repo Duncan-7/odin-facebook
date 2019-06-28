@@ -1,0 +1,7 @@
+<p>
+<%= form_for(@comment) do |f| %>
+  <%= f.text_area :content, size: "35x3" %><br>
+  <%= hidden_field_tag :post_id, @post.id %>
+  <%= f.submit "Submit Comment" %>
+<% end %>
+</p>
