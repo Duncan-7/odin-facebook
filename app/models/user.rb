@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :friends, through: :friendships, class_name: "User"
   has_many :sent_requests, foreign_key: :sender_id, class_name: "FriendRequest", dependent: :destroy
   has_many :received_requests, foreign_key: :receiver_id, class_name: "FriendRequest", dependent: :destroy
+  has_many :posts
 
   validates :name, presence: true, length: { maximum: 50 }
 

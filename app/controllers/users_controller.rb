@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @requests = FriendRequest.find_by(receiver_id: @user.id)
+    @posts = @user.posts
   end
 
 end

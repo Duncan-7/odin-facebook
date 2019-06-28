@@ -1,0 +1,6 @@
+<p class="heading"><%= post.created_at %></p>
+    <p><%= post.content %></p>
+    <% if post.user == current_user %>
+      <%= link_to "edit", edit_post_path(post) %><br>
+      <%= link_to "delete", post_path(post), method: :delete %><br><br>
+    <% end %>

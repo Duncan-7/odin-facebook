@@ -1,7 +1,9 @@
-<h3><%= @user.name %>'s profile</h3>
+<h2><%= @user.name %>'s profile</h2>
 <p>
 <% if @user.friends.include?(current_user) %>
   <%= render 'unfriend' %>
+<% elsif current_user.received_requests.find_by(sender_id: @user.id) %>
+  <%= render 'accept_friend_request' %>
 <% elsif current_user.sent_requests.find_by(receiver_id: @user.id) %>
   <%= render 'cancel_friend_request' %>
 <% elsif @user != current_user  %>
@@ -13,12 +15,22 @@
   <p>Name: <%= @user.name %></p>
   <p>Email: <%= @user.email %></p>
 </div>
+
 <% if @user == current_user %>
   <%= link_to "Edit Details", edit_user_registration_path(current_user) %> 
-  <h5>Notifications:</h5>
+  <h4>Notifications:</h4>
   <% @user.received_requests.each do |request| %>
     <%= "#{User.find_by(id: request.sender_id).name}:" %>
     <%= link_to "accept", friendships_path(sender_id: request.sender_id), method: :post %>
     <%= link_to "reject", friend_request_path(sender_id: request.sender_id), method: :delete %>
   <% end %>
 <% end %>
+<br>
+<h4>Posts:</h4>
+<div class="post_feed">
+  <%= render @posts %>
+</div>
+
+
+
+

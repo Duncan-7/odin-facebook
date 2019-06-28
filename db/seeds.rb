@@ -12,8 +12,32 @@ User.create!(name:  "Duncan",
              password_confirmation: "foobar",
              )
 
-             User.create!(name:  "Cordelia",
+User.create!(name:  "Cordelia",
              email: "cordi@cordi.com",
              password:              "foobar",
              password_confirmation: "foobar",
              )
+
+User.create!(name:  "Willis",
+             email: "willis@willis.com",
+             password:              "foobar",
+             password_confirmation: "foobar",
+             )
+
+User.first.posts.create!(content: "Duncan's post 1")
+
+User.first.posts.create!(content: "Duncan's post 2",
+created_at: (Time.now - 3400))
+                    
+User.second.posts.create!(content: "Cordelia's post 1")
+
+User.second.posts.create!(content: "Cordelia's post 2",
+created_at: (Time.now - 3500))
+
+User.third.posts.create!(content: "Willis's post 1")
+
+User.third.posts.create!(content: "Willis's post 2",
+created_at: (Time.now - 3600))
+
+Friendship.create!(user_id: 1,
+friend_id: 2)
