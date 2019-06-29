@@ -1,4 +1,13 @@
 <%= render @post %>
+<% if @likes.any? %>
+  <p>
+  Liked:
+  <% @likes.each do |like| %>
+    <%= link_to "#{like.user.name}", user_path(like.user.id) %>
+  <% end %>
+  </p>
+<% end %>
+
 Comments:
 <%= render 'comment_form' %>
 <%= render @comments %>

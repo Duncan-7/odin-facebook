@@ -2,9 +2,15 @@
 <p class="heading"><%= link_to post.created_at, post_path(post) %></p>
     <p><%= post.content %></p>
     <%= link_to "#{post.comments.count} comments", post_path(post) %><br>
+    <%= link_to "#{pluralize(post.likes.count, "like")} ", post_path(post) %><br>
+    <% if post.likes.find_by(user_id: current_user.id) %>
+      <%= link_to "unlike", like_path(post.id, post_id: post.id), method: :delete %><br>
+    <% else %>
+      <%= link_to "like", likes_path(post_id: post.id), method: :post %><br>
+    <% end %>
     <% if post.user == current_user %>
       <%= link_to "edit", edit_post_path(post) %><br>
-      <%= link_to "delete", post_path(post), method: :delete %>
+      <%= link_to "delete", post_path(post), method: :delete, data: { confirm: "You sure?" } %>
       <br>
     <% end %>
     <br> 

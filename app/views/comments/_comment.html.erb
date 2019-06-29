@@ -3,5 +3,5 @@
     <p><%= comment.content %></p>
     <% if comment.user == current_user %>
       
-      <%= link_to "delete", comment_path(comment), method: :delete %><br><br>
+      <%= link_to "delete", comment_path(comment), method: :delete, data: { confirm: "You sure?" } %><br><br>
     <% end %>

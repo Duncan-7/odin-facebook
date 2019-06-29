@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :received_requests, foreign_key: :receiver_id, class_name: "FriendRequest", dependent: :destroy
   has_many :posts
   has_many :comments, through: :posts
+  has_many :likes, through: :posts
 
   validates :name, presence: true, length: { maximum: 50 }
 

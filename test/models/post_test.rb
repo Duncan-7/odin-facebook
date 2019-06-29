@@ -20,8 +20,8 @@ class PostTest < ActiveSupport::TestCase
     assert_not @post.valid?
   end
 
-  test "content should be at most 500 characters" do
-    @post.content = "a" * 501
+  test "content should be at most 2000 characters" do
+    @post.content = "a" * 2001
     assert_not @post.valid?
   end
 end

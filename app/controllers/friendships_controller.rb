@@ -1,5 +1,6 @@
 class FriendshipsController < ApplicationController
   before_action :logged_in_user
+  
   def create
     friend = User.find_by(id: params[:sender_id])
     if request = FriendRequest.find_by(sender_id: friend.id, receiver_id: current_user.id)
