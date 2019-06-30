@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :comments, through: :posts
   has_many :likes, through: :posts
 
+
   validates :name, presence: true, length: { maximum: 50 }
 
   def send_friend_request(other_user)
