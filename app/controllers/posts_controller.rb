@@ -49,7 +49,7 @@ class PostsController < ApplicationController
   def destroy
     Post.find(params[:id]).destroy
     flash[:notice] = "Post deleted"
-    redirect_back(fallback_location: root_path)
+    redirect_to posts_path
   end
 
   private
