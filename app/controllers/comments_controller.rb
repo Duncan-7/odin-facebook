@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
       flash[:notice] = "Comment created"
       redirect_back(fallback_location: root_path)
     else
-      flash[:alert] = "Error"
+      flash[:alert] = "Comment can't be blank"
       redirect_back(fallback_location: root_path)
     end
   end

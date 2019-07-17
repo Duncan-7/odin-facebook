@@ -11,7 +11,6 @@ class PostsController < ApplicationController
       flash[:notice] = "Post created"
       redirect_to posts_path
     else
-      flash[:alert] = "Error"
       render 'new'
     end
   end
@@ -43,7 +42,6 @@ class PostsController < ApplicationController
       flash[:notice] = "Edit successful"
       redirect_to posts_path
     else
-      flash[:alert] = "Error"
       render 'edit'
     end
   end

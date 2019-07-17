@@ -8,7 +8,7 @@ class FriendRequestsController < ApplicationController
       flash[:notice] = "Friend request sent"
       redirect_back(fallback_location: root_path)
     else
-      flash[:notice] = "Friend request could not be sent"
+      flash[:alert] = "Friend request could not be sent"
       redirect_back(fallback_location: root_path)
     end
   end
@@ -20,7 +20,7 @@ class FriendRequestsController < ApplicationController
       flash[:notice] = "Friend request cancelled"
       redirect_back(fallback_location: root_path)
     else
-      flash[:notice] = "Friend request could not be found"
+      flash[:alert] = "Friend request could not be found"
       redirect_back(fallback_location: root_path)
     end
   end

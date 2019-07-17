@@ -10,10 +10,10 @@ class FriendshipsController < ApplicationController
         flash[:notice] = "You are now friends with #{friend.name}"
         redirect_back(fallback_location: root_path)
       else
-        flash[:notice] = "Something went wrong"
+        flash[:alert] = "Something went wrong"
       end
     else
-      flash[:notice] = "You haven't sent this person a friend request yet. Send one now!"
+      flash[:alert] = "You haven't sent this person a friend request yet. Send one now!"
       redirect_back(fallback_location: root_path)
     end
   end

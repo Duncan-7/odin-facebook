@@ -8,7 +8,7 @@ class LikesController < ApplicationController
     if @like.save
       redirect_back(fallback_location: root_path)
     else
-      flash[:alert] = "Error"
+      flash[:alert] = "Something went wrong"
       redirect_back(fallback_location: root_path)
     end
   end

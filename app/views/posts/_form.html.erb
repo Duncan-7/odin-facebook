@@ -1,5 +1,6 @@
 <p>
 <%= form_for(@post) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
   <%= f.text_area :content, size: "35x8" %><br>
   <div class="field">
     
