@@ -6,10 +6,10 @@ class FriendRequestsController < ApplicationController
     friend_request = current_user.sent_requests.build(receiver_id: user.id)
     if friend_request.save
       flash[:notice] = "Friend request sent"
-      redirect_to user_path(user)
+      redirect_back(fallback_location: root_path)
     else
       flash[:notice] = "Friend request could not be sent"
-      redirect_to user_path(user)
+      redirect_back(fallback_location: root_path)
     end
   end
   
@@ -18,10 +18,10 @@ class FriendRequestsController < ApplicationController
       FriendRequest.find_by(sender_id: current_user.id, receiver_id: params[:receiver_id])
       request.destroy
       flash[:notice] = "Friend request cancelled"
-      redirect_to current_user
+      redirect_back(fallback_location: root_path)
     else
       flash[:notice] = "Friend request could not be found"
-      redirect_to current_user
+      redirect_back(fallback_location: root_path)
     end
   end
 end

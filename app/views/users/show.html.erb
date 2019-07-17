@@ -1,14 +1,8 @@
 <h2><%= @user.name %>'s profile</h2>
+<%= user_avatar(@user, 100) %>
 <p>
-<% if @user.friends.include?(current_user) %>
-  <%= render 'unfriend' %>
-<% elsif current_user.received_requests.find_by(sender_id: @user.id) %>
-  <%= render 'accept_friend_request' %>
-<% elsif current_user.sent_requests.find_by(receiver_id: @user.id) %>
-  <%= render 'cancel_friend_request' %>
-<% elsif @user != current_user  %>
-  <%= render 'add_friend' %>
-<% end %>
+<%= render 'friend_buttons' %>
+
 
 </p>
 <div class="user_details">

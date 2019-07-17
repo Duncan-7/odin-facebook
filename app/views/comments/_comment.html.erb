@@ -1,7 +1,12 @@
-<p class="heading"><%= comment.user %></p>
-<p class="heading"><%= comment.created_at %></p>
-    <p><%= comment.content %></p>
-    <% if comment.user == current_user %>
-      
-      <%= link_to "delete", comment_path(comment), method: :delete, data: { confirm: "You sure?" } %><br><br>
-    <% end %>
+<p class="heading">
+<% unless comment.user.nil? %>
+  <%= user_avatar(comment.user, 40) %>
+  <%= link_to "#{comment.user.name}", user_path(comment.user) %>
+  </p>
+  <p class="heading"><%= "#{time_ago_in_words(comment.created_at)} ago" %></p>
+      <p><%= comment.content %></p>
+      <% if comment.user == current_user %>
+        
+        <%= link_to "delete", comment_path(comment), method: :delete, data: { confirm: "You sure?" } %><br><br>
+      <% end %>
+<% end %>

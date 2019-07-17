@@ -1,5 +1,7 @@
 <% if @user.friends.include?(current_user) %>
   <%= render 'unfriend' %>
+<% elsif current_user.received_requests.find_by(sender_id: @user.id) %>
+  <%= render 'accept_friend_request' %>
 <% elsif current_user.sent_requests.find_by(receiver_id: @user.id) %>
   <%= render 'cancel_friend_request' %>
 <% elsif @user != current_user  %>

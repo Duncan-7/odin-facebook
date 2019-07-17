@@ -2,7 +2,7 @@
 @import "bootstrap";
 
 body {
-  width: 800px;
+  width: 80%;
   margin: auto;
   background-color: lightgrey;
 }
@@ -10,3 +10,22 @@ body {
 .heading {
   font-weight: bold;
 }
+
+.rounded-circle {
+  border-radius: 50%;
+}
+
+.flex-nav ul {
+  display: flex;
+  list-style: none;
+
+  width: 65%;
+  justify-content: space-between;
+  padding: 0px;
+  min-width: 350px;
+}
+
+.attached-image {
+  max-width: 400px;
+}
+

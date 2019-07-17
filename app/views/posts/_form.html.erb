@@ -1,6 +1,13 @@
 <p>
 <%= form_for(@post) do |f| %>
   <%= f.text_area :content, size: "35x8" %><br>
+  <div class="field">
+    
+    
+    
+    <%= f.file_field :image %>
+  </div>
   <%= f.submit yield(:button_text) %>
+  
 <% end %>
 </p>

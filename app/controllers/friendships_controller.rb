@@ -8,22 +8,22 @@ class FriendshipsController < ApplicationController
       if friendship.save
         request.destroy
         flash[:notice] = "You are now friends with #{friend.name}"
-        redirect_to current_user
+        redirect_back(fallback_location: root_path)
       else
         flash[:notice] = "Something went wrong"
       end
     else
       flash[:notice] = "You haven't sent this person a friend request yet. Send one now!"
-      redirect_to current_user
+      redirect_back(fallback_location: root_path)
     end
   end
   
   def destroy
     if friendship = current_user.friendships.find_by(friend_id: params[:friend_id])
       friendship.destroy
-      redirect_to current_user
+      redirect_back(fallback_location: root_path)
     else
-      redirect_to current_user
+      redirect_back(fallback_location: root_path)
     end
   end
 end

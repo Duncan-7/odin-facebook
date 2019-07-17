@@ -18,8 +18,9 @@ class PostsController < ApplicationController
   
   def show
     @post = Post.find(params[:id])
-    @comment = @post.comments.build
+    
     @comments = @post.comments
+    @comment = @post.comments.build
     @likes = @post.likes
   end
 
@@ -50,11 +51,11 @@ class PostsController < ApplicationController
   def destroy
     Post.find(params[:id]).destroy
     flash[:notice] = "Post deleted"
-    redirect_to current_user
+    redirect_back(fallback_location: root_path)
   end
 
   private
     def post_params
-      params.require(:post).permit(:content)
+      params.require(:post).permit(:content, :image)
     end
 end

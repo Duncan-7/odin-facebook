@@ -41,3 +41,7 @@ created_at: (Time.now - 3600))
 
 Friendship.create!(user_id: 1,
 friend_id: 2)
+
+User.first.avatar.attach(io: File.open('/home/duncan/Downloads/bird.jpg'), filename: 'bird.jpg')
+User.second.avatar.attach(io: File.open('/home/duncan/Downloads/snake.jpg'), filename: 'snake.jpg')
+User.third.avatar.attach(io: File.open('/home/duncan/Downloads/Pleiades_large.jpg'), filename: 'Pleiades_large.jpg')

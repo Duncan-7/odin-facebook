@@ -1,6 +1,12 @@
-<p class="heading"><%= link_to "#{post.user.name}", user_path(post.user) %></p>
+<p class="heading">
+<%= user_avatar(post.user) %>
+<%= link_to "#{post.user.name}", user_path(post.user) %>
+</p>
 <p class="heading"><%= link_to post.created_at, post_path(post) %></p>
     <p><%= post.content %></p>
+    <% if post.image.attached? %>
+      <p><%= image_tag(post.image, class: "attached-image") %></p>
+    <% end %>
     <%= link_to "#{post.comments.count} comments", post_path(post) %><br>
     <%= link_to "#{pluralize(post.likes.count, "like")} ", post_path(post) %><br>
     <% if post.likes.find_by(user_id: current_user.id) %>
