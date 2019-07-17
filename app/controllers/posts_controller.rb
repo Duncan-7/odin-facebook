@@ -9,7 +9,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     if @post.save
       flash[:notice] = "Post created"
-      redirect_to root_url
+      redirect_to posts_path
     else
       flash[:alert] = "Error"
       render 'new'
@@ -41,7 +41,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     if @post.update_attributes(post_params)
       flash[:notice] = "Edit successful"
-      redirect_to current_user
+      redirect_to posts_path
     else
       flash[:alert] = "Error"
       render 'edit'
